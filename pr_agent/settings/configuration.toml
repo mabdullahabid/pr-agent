@@ -1,11 +1,11 @@
 [config]
-model="gpt-4-turbo-2024-04-09"
-model_turbo="gpt-4o"
-fallback_models=["gpt-4-0125-preview"]
+model="gpt-4o-2024-05-13"
+model_turbo="gpt-4o-2024-05-13"
+fallback_models=["gpt-4-turbo-2024-04-09"]
 git_provider="github"
-publish_output=true
+publish_output=false
 publish_output_progress=true
-verbosity_level=0 # 0,1,2
+verbosity_level=2 # 0,1,2
 use_extra_bad_extensions=false
 use_wiki_settings_file=true
 use_repo_settings_file=true
@@ -25,7 +25,7 @@ is_auto_command=false
 
 [pr_reviewer] # /review #
 # enable/disable features
-require_score_review=false
+require_score_review=true
 require_tests_review=true
 require_estimate_effort_to_review=true
 require_can_be_split_review=false
@@ -34,7 +34,7 @@ require_security_review=true
 require_soc2_ticket=false
 soc2_ticket_prompt="Does the PR description include a link to ticket in a project management system (e.g., Jira, Asana, Trello, etc.) ?"
 # general options
-num_code_suggestions=0
+num_code_suggestions=8
 inline_code_comments = false
 ask_and_reflect=false
 #automatic_review=true
@@ -55,7 +55,7 @@ maximal_review_effort=5
 
 
 [pr_description] # /describe #
-publish_labels=true
+publish_labels=false
 add_original_user_description=true
 generate_ai_title=false
 use_bullet_points=true
