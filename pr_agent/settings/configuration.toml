@@ -5,10 +5,10 @@ model_turbo="gpt-4o-2024-11-20"
 fallback_models=["gpt-4o-2024-08-06"]
 # CLI
 git_provider="github"
-publish_output=true
+publish_output=false
 publish_output_progress=true
 publish_output_no_suggestions=true
-verbosity_level=0 # 0,1,2
+verbosity_level=2 # 0,1,2
 use_extra_bad_extensions=false
 # Configurations
 use_wiki_settings_file=true
@@ -47,14 +47,14 @@ enable_ai_metadata = false # will enable adding ai metadata
 
 [pr_reviewer] # /review #
 # enable/disable features
-require_score_review=false
+require_score_review=true
 require_tests_review=true
 require_estimate_effort_to_review=true
 require_can_be_split_review=false
 require_security_review=true
 require_ticket_analysis_review=true
 # general options
-num_code_suggestions=0
+num_code_suggestions=8
 inline_code_comments = false
 ask_and_reflect=false
 #automatic_review=true

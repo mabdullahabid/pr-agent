@@ -156,6 +156,17 @@ class PRReviewer:
             pr_review = self._prepare_pr_review()
             get_logger().debug(f"PR output", artifact=pr_review)
 
+            import re
+
+            # Assuming pr_url is the pull request URL
+            match = re.search(r'/(.+)/pull/(\d+)', self.pr_url)
+            repo_slug = match.group(1).replace('/', '_')  # replace '/' with '_' in repo slug
+            pr_id = match.group(2)
+            filename = f"{repo_slug}_pr_review_{pr_id}.md"
+
+            with open(filename, 'w') as file:
+                file.write(pr_review)
+
             if get_settings().config.publish_output:
                 # publish the review
                 if get_settings().pr_reviewer.persistent_comment and not self.incremental.is_incremental:
