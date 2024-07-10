@@ -136,6 +136,18 @@ class PRDescription:
             if get_settings().get('config', {}).get('output_relevant_configurations', False):
                 pr_body += show_relevant_configurations(relevant_section='pr_description')
 
+            # Assuming pr_url is the pull request URL
+            pr_url = self.git_provider.get_pr_url()
+            match = re.search(r'/(.+)/pull/(\d+)', pr_url)
+            repo_slug = match.group(1).replace('/', '_')  # replace '/' with '_' in repo slug
+            pr_id = match.group(2)
+            filename = f"exported/{repo_slug}_pr_describe_{pr_id}.md"
+
+            with open(filename, 'w') as file:
+                file.write(f"PR Labels: {pr_labels}\n")
+                file.write(f"PR Title: {pr_title}\n")
+                file.write(f"PR Body: {pr_body}\n")
+
             if get_settings().config.publish_output:
                 # publish labels
                 if get_settings().pr_description.publish_labels and pr_labels and self.git_provider.is_supported("get_labels"):
